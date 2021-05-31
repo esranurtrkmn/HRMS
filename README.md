@@ -1,4 +1,4 @@
-# HRMSDemo
+# HRMS
 ## Hrms with Spring Boot using PostgreSQL
  
 - There's 3 roles have been defined in this project. Employer, candidate and employee. 
