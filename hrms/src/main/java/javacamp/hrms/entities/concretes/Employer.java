@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","job_adverts"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdverts"})
 public class Employer extends User{
 		
 	
@@ -46,5 +47,6 @@ public class Employer extends User{
 
 	
 	@OneToMany(mappedBy="employer")
+	@JsonIgnore
 	private List<JobAdvert> jobAdverts;
 }

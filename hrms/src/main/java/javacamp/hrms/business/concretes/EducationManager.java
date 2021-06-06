@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import javacamp.hrms.business.abstracts.EducationService;
 import javacamp.hrms.core.utilities.results.DataResult;
-import javacamp.hrms.core.utilities.results.ErrorResult;
 import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.core.utilities.results.SuccessDataResult;
 import javacamp.hrms.core.utilities.results.SuccessResult;
@@ -36,12 +35,12 @@ public class EducationManager implements EducationService{
 		Education education=new Education();
 		
 		if(education.getEndYear()==0){
-			education.setGraduateStatus(" Devam ediyor.");
+			education.setGraduateStatus("Continues");
 		}
 		
 		return new SuccessDataResult<List<Education>>(
 				this.educationRepository.getByEducationSchoolNameAndEndYearDesc(),
-				"Okul isimleri tarihe göre sıralandı.");
+				"School names has been listed by graduation year.");
 		
 	}
 
@@ -49,19 +48,12 @@ public class EducationManager implements EducationService{
 	public DataResult<List<Education>> getAll() {
 		
 		return new SuccessDataResult<List<Education>>(this.educationRepository.findAll(), 
-				"Eğitim bilgisi listelendi");
+				"Education informations has been listed.");
 	}
 
 	@Override
 	public Result save(EducationSaveDto education) {
-		/*if(!this.educationRepository.existsById(education.getResumeId())) {
-			//return new ErrorResult("Böyle bir cv yok.");
-		}
-		else if(education.getStartYear()==0) {
-			return new ErrorResult("Başlangıç tarihi giriniz.");
-		}*/
-		
-		
+				
 		Education informations=new Education();
 		informations.setResume(this.resumeRepository.getById(education.getResumeId()));
         informations.setSchoolName(education.getSchool_name());
@@ -70,7 +62,7 @@ public class EducationManager implements EducationService{
         informations.setEndYear(education.getEndYear());
 		
 		this.educationRepository.save(informations);
-		return new SuccessResult("Eğitim bilgisi eklendi.");
+		return new SuccessResult("Education information has been added.");
 		
 	}
 

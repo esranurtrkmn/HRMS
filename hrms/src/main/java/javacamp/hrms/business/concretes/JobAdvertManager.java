@@ -5,7 +5,6 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javacamp.hrms.business.abstracts.JobAdvertService;
@@ -43,23 +42,7 @@ public class JobAdvertManager implements JobAdvertService {
 		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertRepository.findAll(),
 				"All job adverts listed.");
 	}
-
-
-	@Override
-	public DataResult<List<JobAdvert>> getByStatus() {
-		Sort sortedCreatedDate = Sort.by(Sort.Direction.ASC, "createdAt");
-		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertRepository.findByStatus(true,sortedCreatedDate),
-				"All active job adverts sorted by date of created.");
-	}
-
-
-	@Override
-	public DataResult<List<JobAdvert>> getByCompanyName(String companyName) {
-		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertRepository.getByEmployerCompanyNameAndStatus(companyName, true),
-				"All active job adverts sorted by companies.");
-	}
-
-
+	
 	@Override
 	public Result closeJobAdvert(int id) {
 		
@@ -71,6 +54,23 @@ public class JobAdvertManager implements JobAdvertService {
 		}
 		else
 			return new ErrorResult("Job advert is already inactive.");
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getByStatus() {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertRepository.findByStatus(),"All active advertisement listed !");
+	}
+
+
+	@Override
+	public DataResult<List<JobAdvert>> getByStatusJobAdvertAndEmployer(int id) {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertRepository.getByStatusJobAdvertAndEmployer(id));
+	}
+
+
+	@Override
+	public DataResult<List<JobAdvert>> findAllByOrderByCreatedAtDesc() {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertRepository.findAllByOrderByCreatedAtDesc());
 	}
 
 

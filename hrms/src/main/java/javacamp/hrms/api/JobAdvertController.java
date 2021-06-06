@@ -29,13 +29,18 @@ public class JobAdvertController {
 	
 	
 	@PostMapping("/add")
-	public Result addAnnouncement(@RequestBody JobAdvert jobAdvert)
+	public Result addJobAdvert(@RequestBody JobAdvert jobAdvert)
 	{
 		return this.jobAdvertService.add(jobAdvert);
 	}
 	
+	@GetMapping("/getByStatus")
+	public DataResult<List<JobAdvert>> getByStatus(){
+		
+		return this.jobAdvertService.getByStatus();
+	}
 	
-	@PostMapping("/deletejobadvert")
+	@PostMapping("/inactivejobadvert")
 	public Result closeJobAdvert(@RequestParam int id)
 	{
 		return this.jobAdvertService.closeJobAdvert(id);
@@ -48,15 +53,15 @@ public class JobAdvertController {
 		return this.jobAdvertService.getAll();
 	}
 	
-	@GetMapping("/getallsorted")
-	public DataResult<List<JobAdvert>> getAllSorted()
-	{
-		return this.jobAdvertService.getByStatus();
-	}
+		
+	@GetMapping("/findAllByOrderByCreatedAt")
+	public DataResult<List<JobAdvert>> findAllByOrderByCreatedAtDesc(){
+		return this.jobAdvertService.findAllByOrderByCreatedAtDesc();
+	}	
 	
-	@GetMapping("/getalljobadvertsandcompany")
-	public DataResult<List<JobAdvert>> getAllByCompanyName(@RequestParam String companyName)
-	{
-		return this.jobAdvertService.getByCompanyName(companyName);
+	
+	@GetMapping("/getAllOpenJobAdvertByEmployer")
+	public DataResult<List<JobAdvert>> getByStatusJobAdvertAndEmployer(@RequestParam int id){
+		return this.jobAdvertService.getByStatusJobAdvertAndEmployer(id);
 	}
 }

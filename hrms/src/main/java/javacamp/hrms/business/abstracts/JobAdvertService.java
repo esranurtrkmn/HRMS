@@ -15,7 +15,9 @@ public interface JobAdvertService{
 	
 	DataResult<List<JobAdvert>> getByStatus();
 	
-	DataResult<List<JobAdvert>> getByCompanyName(String companyName);
+	DataResult<List<JobAdvert>> getByStatusJobAdvertAndEmployer(int id);
+	
+	DataResult<List<JobAdvert>> findAllByOrderByCreatedAtDesc();
 	
 	Result closeJobAdvert(int id); 
 }

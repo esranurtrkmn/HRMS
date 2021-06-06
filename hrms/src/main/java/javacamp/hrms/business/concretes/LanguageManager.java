@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javacamp.hrms.business.abstracts.LanguageService;
 import javacamp.hrms.core.utilities.results.DataResult;
-import javacamp.hrms.core.utilities.results.ErrorResult;
 import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.core.utilities.results.SuccessDataResult;
 import javacamp.hrms.core.utilities.results.SuccessResult;
@@ -31,11 +30,7 @@ public class LanguageManager implements LanguageService{
 
 	@Override
 	public Result save(LanguageSaveDto language) {
-	/*	if(!this.languageRepository.existsById(language.getResumeId())) {
-			return new ErrorResult("Böyle bir cv yok.");
-		}*/
-		
-		
+			
 		Language informations=new Language();
 		informations.setResume(this.resumeRepository.getById(language.getResumeId()));
 		informations.setLanguageName(language.getLanguageName());
@@ -43,12 +38,12 @@ public class LanguageManager implements LanguageService{
 		
 		
 		this.languageRepository.save(informations);
-		return new SuccessResult("Yabancı dil bilgisi eklendi.");
+		return new SuccessResult("Foreign language skill has been added.");
 	}
 
 	@Override
 	public DataResult<List<Language>> getAll() {
-		return new SuccessDataResult<List<Language>>(this.languageRepository.findAll(),"Yabancı diller listelendi.");
+		return new SuccessDataResult<List<Language>>(this.languageRepository.findAll(),"Foreign languages has been listed.");
 	}
 	
 	

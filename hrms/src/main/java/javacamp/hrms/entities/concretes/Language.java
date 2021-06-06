@@ -38,8 +38,12 @@ public class Language {
 	private int languageLevel;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="candidate_id")
+	private Candidate candidate;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="resume_id")
-    private Resume resume;	
+	private Resume resume;
 	
 	
 }
