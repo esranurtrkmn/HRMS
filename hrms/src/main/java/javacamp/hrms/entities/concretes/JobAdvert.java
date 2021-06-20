@@ -1,10 +1,9 @@
 package javacamp.hrms.entities.concretes;
 
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +17,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-
-import org.hibernate.annotations.Cascade;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,11 +36,16 @@ public class JobAdvert {
 	@Column(name="id")
 	private int id;
 	
-	
+	@NotNull
+	@NotEmpty
+    @NotBlank(message = "Job Description cannot be empty!")
 	@Column(name="job_description")
 	private String jobDescription;
-				
 	
+		
+	@NotNull
+	@NotEmpty
+    @NotBlank(message = "Number of active jobs cannot be empty!")
 	@Positive
 	@Column(name="number_of_active_jobs")
 	private int numberOfActiveJobs;	
@@ -57,13 +59,13 @@ public class JobAdvert {
 	private int minSalary;
 	
 	
-	
+	@NotNull
 	@Column(name = "created_at")
-	private LocalDate createdAt;
+	private Date createdAt;
 	
 		
 	@Column(name="application_deadline")
-	private LocalDate applicationDeadline;
+	private Date applicationDeadline;
 	
 	
 	@Column(name = "is_active")
@@ -85,17 +87,6 @@ public class JobAdvert {
 	@JoinColumn(name="city_id")
 	private City city;
 	
-
-	@ManyToOne()	
-	@JoinColumn(name="work_place_id")
-	private WorkPlace workPlace;
-	
-	
-	@ManyToOne()	
-	@JoinColumn(name="work_type_id")
-	private WorkType workType;
-	
-	private boolean confirmed;
 	
    
 }

@@ -11,8 +11,6 @@ public interface JobAdvertService{
 
 	Result add(JobAdvert jobAdvert);
 	
-	Result setActiveAndConfirm(int jobAdvId,int employeeId);
-	
 	DataResult<List<JobAdvert>> getAll();
 	
 	DataResult<List<JobAdvert>> getByStatus();
@@ -22,8 +20,6 @@ public interface JobAdvertService{
 	DataResult<List<JobAdvert>> findAllByOrderByCreatedAtDesc();
 	
 	Result closeJobAdvert(int id); 
-	
-	DataResult<JobAdvert> getById(int id);
 }
 
 
