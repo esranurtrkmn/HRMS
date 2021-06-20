@@ -12,4 +12,5 @@ public interface CandidateService {
 
 	public DataResult<List<Candidate>> getAll();
 	public Result add(Candidate candidate) throws NumberFormatException, RemoteException, Exception;
+	DataResult<Candidate> getById(int id);
 }

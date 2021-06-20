@@ -54,8 +54,7 @@ public class Resume {
 	@ManyToOne()
 	@JoinColumn(name="candidate_id")
 	private Candidate candidate;
-	
-	
+		
 	@OneToMany(mappedBy="resume",fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<DigitalSkill> digitalSkills;

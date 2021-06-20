@@ -4,15 +4,21 @@ package javacamp.hrms.dataAccess.abstracts;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import javacamp.hrms.entities.concretes.JobAdvert;
-import org.springframework.data.domain.Sort;
+
 
 public interface JobAdvertRepository extends JpaRepository<JobAdvert,Integer>{
 
-	List<JobAdvert> findByStatus(boolean status, Sort sort);
+	@Query("FROM JobAdvert WHERE status=true")
+	List<JobAdvert> findByStatus();
 	
-	List<JobAdvert> getByEmployerCompanyNameAndStatus(String companyName,boolean status);
+	@Query("FROM JobAdvert WHERE status = true AND employer_id =:id")
+	List<JobAdvert> getByStatusJobAdvertAndEmployer(int id);
+	
+	@Query("FROM JobAdvert WHERE status = true ORDER BY createdAt Desc")
+	List<JobAdvert> findAllByOrderByCreatedAtDesc();
 	
 	JobAdvert getById(int id);
 	

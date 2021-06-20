@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -50,4 +52,24 @@ public class Candidate extends User{
 	
 	@OneToMany(mappedBy="candidate")
 	private List<Resume> resumes;
+	
+	@OneToMany(mappedBy="candidate",fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<DigitalSkill> digitalSkills;
+	
+	@OneToMany(mappedBy="candidate",fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Education> educations;
+	
+	@OneToMany(mappedBy="candidate",fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Language> languages;
+	
+	@OneToMany(mappedBy="candidate",fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Photo> photos;
+	
+	@OneToMany(mappedBy="candidate",fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<WorkExperience> workExperiences;
 }

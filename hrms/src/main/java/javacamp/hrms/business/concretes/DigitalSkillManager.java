@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javacamp.hrms.business.abstracts.DigitalSkillService;
 import javacamp.hrms.core.utilities.results.DataResult;
-import javacamp.hrms.core.utilities.results.ErrorResult;
 import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.core.utilities.results.SuccessDataResult;
 import javacamp.hrms.core.utilities.results.SuccessResult;
@@ -31,24 +30,20 @@ public class DigitalSkillManager implements DigitalSkillService{
 
 	@Override
 	public Result save(DigitalSkillSaveDto digitalSkill) {
-	/*	if(!this.digitalSkillRepository.existsById(digitalSkill.getResumeId())) {
-			return new ErrorResult("Böyle bir cv yok.");
-		}*/
-		
-		
+			
 		DigitalSkill informations=new DigitalSkill();
 		informations.setResume(this.resumeRepository.getById(digitalSkill.getResumeId()));
 		informations.setSkillName(digitalSkill.getSkillName());
 		
 		
 		this.digitalSkillRepository.save(informations);
-		return new SuccessResult("Teknoloji bilgisi eklendi.");
+		return new SuccessResult("Digital skill has been added.");
 	}
 
 	@Override
 	public DataResult<List<DigitalSkill>> getAll() {
 		return new SuccessDataResult<List<DigitalSkill>>(this.digitalSkillRepository.findAll(),
-				"Teknoloji bilgileri listelendi.");
+				"Digital skills has been listed.");
 	}
 
 	

@@ -47,6 +47,10 @@ public class WorkExperience {
 	
 	@Column(name="work_status")
 	private String workStatus;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="candidate_id")
+	private Candidate candidate;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="resume_id")

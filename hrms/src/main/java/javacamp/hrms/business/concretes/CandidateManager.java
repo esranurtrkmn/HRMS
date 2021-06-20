@@ -63,4 +63,9 @@ public class CandidateManager extends UserManager implements CandidateService {
 		
 	}
 
+	@Override
+	public DataResult<Candidate> getById(int id) {
+		return new SuccessDataResult<Candidate>(this.candidateRepository.getById(id));
+	}
+
 }

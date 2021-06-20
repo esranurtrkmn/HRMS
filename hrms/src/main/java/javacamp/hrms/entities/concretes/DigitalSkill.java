@@ -35,6 +35,10 @@ public class DigitalSkill {
 	private String skillName;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="candidate_id")
+	private Candidate candidate;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="resume_id")
 	private Resume resume;
 }

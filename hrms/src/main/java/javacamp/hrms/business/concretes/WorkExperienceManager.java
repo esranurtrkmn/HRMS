@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javacamp.hrms.business.abstracts.WorkExperienceService;
 import javacamp.hrms.core.utilities.results.DataResult;
-import javacamp.hrms.core.utilities.results.ErrorResult;
 import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.core.utilities.results.SuccessDataResult;
 import javacamp.hrms.core.utilities.results.SuccessResult;
@@ -35,24 +34,17 @@ public class WorkExperienceManager implements WorkExperienceService{
 		WorkExperience workExperience=new WorkExperience();
 		
 		if(workExperience.getEndYear()==0){
-			workExperience.setWorkStatus(" Devam ediyor.");
+			workExperience.setWorkStatus(" Continues.");
 		}
 		
 		return new SuccessDataResult<List<WorkExperience>>
 		(this.workExperienceRepository.getByWorkExperienceCompanyNameAndEndYearDesc(),
-				"Şirket adları tarihe göre listelendi.");
+				"The company names has been listed by end year.");
 	}
 
 	@Override
 	public Result save(WorkExperienceSaveDto workExperience) {
 		
-		/*if(!this.workExperienceRepository.existsById(workExperience.getResumeId())) {
-			return new ErrorResult("Böyle bir cv yok.");
-		}
-		else if(workExperience.getStartYear()==0) {
-			return new ErrorResult("Başlangıç tarihi giriniz.");
-		}
-		*/
 		WorkExperience informations=new WorkExperience();
 		informations.setResume(this.resumeRepository.getById(workExperience.getResumeId()));
 		informations.setCompanyName(workExperience.getCompanyName());
@@ -61,14 +53,14 @@ public class WorkExperienceManager implements WorkExperienceService{
 		informations.setEndYear(workExperience.getEndYear());
 		
 		this.workExperienceRepository.save(informations);
-		return new SuccessResult("Tecrübe bilgisi eklendi.");
+		return new SuccessResult("Work experience information has been added.");
 	}
 
 	@Override
 	public DataResult<List<WorkExperience>> getAll() {
 		
 		return new SuccessDataResult<List<WorkExperience>>(this.workExperienceRepository.findAll(),
-				"İş tecrübeleri listelendi.");
+				"Work experiences has been listed.");
 	}
 
 }
