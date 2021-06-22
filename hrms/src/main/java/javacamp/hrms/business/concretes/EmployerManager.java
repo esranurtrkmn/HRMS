@@ -67,8 +67,6 @@ public class EmployerManager extends UserManager implements EmployerService{
 
 	@Override
 	public DataResult<Employer> getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return new SuccessDataResult<Employer>(this.employerRepository.getById(id),"Employers listed.");
 	}
-
 }

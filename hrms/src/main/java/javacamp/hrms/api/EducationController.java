@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import javacamp.hrms.entities.dtos.EducationSaveDto;
 
 @RestController
 @RequestMapping("/api/education")
+@CrossOrigin
 public class EducationController {
 	
 	private EducationService educationService;
