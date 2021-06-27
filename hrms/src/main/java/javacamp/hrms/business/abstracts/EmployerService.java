@@ -11,8 +11,9 @@ import javacamp.hrms.entities.concretes.Employer;
 
 public interface EmployerService{
 
-	 DataResult<List<Employer>> getAll();
 	 Result add(Employer employer);
+	 Result update(Employer employer);
+	 DataResult<List<Employer>> getAll();	 
 	 DataResult<Employer> getById(int id);
 	
 }

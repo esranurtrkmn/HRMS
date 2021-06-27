@@ -9,6 +9,7 @@ import javacamp.hrms.entities.dtos.LanguageSaveDto;
 
 public interface LanguageService {
 
-	Result save(LanguageSaveDto language);
+	Result save(Language language);
+	Result update(Language language);
 	DataResult<List<Language>> getAll();
 }

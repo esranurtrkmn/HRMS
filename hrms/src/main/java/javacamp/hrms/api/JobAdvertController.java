@@ -53,15 +53,6 @@ public class JobAdvertController {
 		return this.jobAdvertService.closeJobAdvert(id);
 	}
 
-	@PostMapping("/setActive")
-	public ResponseEntity<?> setActiveAndConfirm(@RequestParam int jobAdvId, @RequestParam int employeeId) {
-		Result result = this.jobAdvertService.setActiveAndConfirm(jobAdvId, employeeId);
-		if (!result.isSuccess()) {
-			ResponseEntity.badRequest().body(result);
-		}
-		return ResponseEntity.ok(result);
-	}
-
 	@GetMapping("/getall")
 	public DataResult<List<JobAdvert>> getAll() {
 		return this.jobAdvertService.getAll();
@@ -75,5 +66,21 @@ public class JobAdvertController {
 	@GetMapping("/getAllOpenJobAdvertByEmployer")
 	public DataResult<List<JobAdvert>> getByStatusJobAdvertAndEmployer(@RequestParam int id) {
 		return this.jobAdvertService.getByStatusJobAdvertAndEmployer(id);
+	}
+	
+	@GetMapping("/getbyisconfirm")
+	public DataResult<List<JobAdvert>> getByIsActive(@RequestParam boolean isConfirm) {
+		return this.jobAdvertService.getByIsConfirm(isConfirm);
+	}
+
+	@GetMapping("/getbyisconfirmandstatus")
+	public DataResult<List<JobAdvert>> getByIsConfirmAndStatus(@RequestParam boolean isConfirm,
+			@RequestParam boolean status) {
+		return this.jobAdvertService.getByIsConfirmAndStatus(isConfirm, status);
+	}
+	
+	@PostMapping("/updateisconfirm")
+	public Result updateIsConfirm(@RequestParam boolean isConfirm, @RequestParam int id) {
+		return this.jobAdvertService.updateIsConfirm(isConfirm, id);
 	}
 }

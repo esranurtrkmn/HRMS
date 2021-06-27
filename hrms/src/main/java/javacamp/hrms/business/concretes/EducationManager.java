@@ -52,18 +52,21 @@ public class EducationManager implements EducationService{
 	}
 
 	@Override
-	public Result save(EducationSaveDto education) {
+	public Result save(Education education) {
 				
-		Education informations=new Education();
-		informations.setResume(this.resumeRepository.getById(education.getResumeId()));
-        informations.setSchoolName(education.getSchool_name());
-        informations.setBranch(education.getBranch());
-        informations.setStartYear(education.getStartYear());
-        informations.setEndYear(education.getEndYear());
 		
-		this.educationRepository.save(informations);
+		this.educationRepository.save(education);
 		return new SuccessResult("Education information has been added.");
 		
+	}
+
+	@Override
+	public Result update(Education education) {
+		Education educationToUpdate=educationRepository.getById(education.getId());
+		educationToUpdate=education;
+		this.educationRepository.save(educationToUpdate);
+		
+		return new SuccessResult("Education has been updated.");
 	}
 
 }

@@ -59,4 +59,23 @@ public class ResumeManager implements ResumeService {
 		
 	}
 
+
+	@Override
+	public Result update(Resume resume) {
+		
+		Resume resumeToUpdate = resumeRepository.getById(resume.getId());
+		resumeToUpdate = resume;
+		this.resumeRepository.save(resumeToUpdate);
+		return new SuccessResult("Resume has been updated.");
+	}
+
+
+	@Override
+	public DataResult<Resume> getByCandidateId(int id) {
+		
+		return new SuccessDataResult<Resume>(this.resumeRepository.getByCandidateId(id),"resumes has been ordered by candidate");
+	}
+
+
+
 }

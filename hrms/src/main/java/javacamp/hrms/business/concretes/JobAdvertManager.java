@@ -26,19 +26,21 @@ public class JobAdvertManager implements JobAdvertService {
 
 	private JobAdvertRepository jobAdvertRepository;
 	private EmployeeRepository employeeRepository;
-	private JobAdvertActivationRepository jobAdvertActivationRepository;
+	
 
 	@Autowired
-	public JobAdvertManager(JobAdvertRepository jobAdvertRepository, EmployeeRepository employeeRepository,
-			JobAdvertActivationRepository jobAdvertActivationRepository) {
+	public JobAdvertManager(JobAdvertRepository jobAdvertRepository, EmployeeRepository employeeRepository) {
 		super();
 		this.jobAdvertRepository = jobAdvertRepository;
 		this.employeeRepository = employeeRepository;
-		this.jobAdvertActivationRepository = jobAdvertActivationRepository;
+		
 	}
 
 	@Override
 	public Result add(JobAdvert jobAdvert) {
+		
+		jobAdvert.setConfirm(false);
+		
 		this.jobAdvertRepository.save(jobAdvert);
 		return new SuccessResult("Job advert successfully added.");
 	}
@@ -76,30 +78,25 @@ public class JobAdvertManager implements JobAdvertService {
 	}
 
 	@Override
-	public Result setActiveAndConfirm(int jobAdvId, int employeeId) {
-		try {
-			if (!this.employeeRepository.existsById(employeeId)) {
-				return new ErrorResult("Böyle bir personel yok");
-			}
-			JobAdvertActivation jobAdActivation = this.jobAdvertActivationRepository.getByJobActId(jobAdvId);
-			jobAdActivation.setConfirmDate(LocalDate.now());
-			jobAdActivation.setConfirm(true);
-			jobAdActivation.setEmployeeId(employeeId);
-			this.jobAdvertActivationRepository.save(jobAdActivation);
-
-			JobAdvert jobAd = this.jobAdvertRepository.getById(jobAdvId);
-			jobAd.setStatus(true);
-			jobAd.setConfirmed(true);
-			this.jobAdvertRepository.save(jobAd);
-			return new SuccessResult("İş ilanı aktifleştirildi");
-		} catch (EntityNotFoundException exception) {
-			return new ErrorResult("İş ilanı bulunamadı");
-		}
+	public DataResult<JobAdvert> getById(int id) {
+		return new SuccessDataResult(this.jobAdvertRepository.getById(id),"job advert has found");
 	}
 
 	@Override
-	public DataResult<JobAdvert> getById(int id) {
-		return new SuccessDataResult(this.jobAdvertRepository.getById(id),"job advert has found");
+	public Result updateIsConfirm(boolean isConfirm, int id) {
+		this.jobAdvertRepository.updateIsConfirm(isConfirm, id);
+		return new SuccessResult("Job advert confirmed.");
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getByIsConfirm(boolean isConfirm) {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertRepository.getByIsConfirm(isConfirm));
+	}
+
+	@Override
+	public DataResult<List<JobAdvert>> getByIsConfirmAndStatus(boolean isConfirm, boolean status) {
+		return new SuccessDataResult<List<JobAdvert>>(
+				this.jobAdvertRepository.getByIsConfirmAndStatus(isConfirm, status));
 	}
 
 	

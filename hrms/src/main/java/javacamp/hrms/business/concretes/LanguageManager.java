@@ -29,21 +29,24 @@ public class LanguageManager implements LanguageService{
 	}
 
 	@Override
-	public Result save(LanguageSaveDto language) {
-			
-		Language informations=new Language();
-		informations.setResume(this.resumeRepository.getById(language.getResumeId()));
-		informations.setLanguageName(language.getLanguageName());
-		informations.setLanguageLevel(language.getLanguageLevel());
+	public Result save(Language language) {
 		
 		
-		this.languageRepository.save(informations);
+		this.languageRepository.save(language);
 		return new SuccessResult("Foreign language skill has been added.");
 	}
 
 	@Override
 	public DataResult<List<Language>> getAll() {
 		return new SuccessDataResult<List<Language>>(this.languageRepository.findAll(),"Foreign languages has been listed.");
+	}
+
+	@Override
+	public Result update(Language language) {
+		Language languageToUpdate=languageRepository.getById(language.getId());
+		languageToUpdate=language;
+		this.languageRepository.save(languageToUpdate);
+		return new SuccessResult("Language has been updated.");
 	}
 	
 	

@@ -33,7 +33,7 @@ public class WorkExperienceController {
 	
 	
 	@PostMapping("/save")
-	public Result save(@Valid @RequestBody WorkExperienceSaveDto workExperience) {
+	public Result save(@Valid @RequestBody WorkExperience workExperience) {
 		
 		return this.workExperienceService.save(workExperience);
 	}

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javacamp.hrms.business.abstracts.EducationService;
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
+import javacamp.hrms.entities.concretes.DigitalSkill;
 import javacamp.hrms.entities.concretes.Education;
 import javacamp.hrms.entities.dtos.EducationSaveDto;
 
@@ -37,10 +38,15 @@ public class EducationController {
     }
 
 	@PostMapping("/save")
-	public Result save(@Valid @RequestBody EducationSaveDto education){
+	public Result save(@Valid @RequestBody Education education){
 	       
 		return this.educationService.save(education);
 	   
+	}
+	
+	@PostMapping("/update")
+	public Result update(@Valid @RequestBody Education education) {
+		return this.educationService.update(education);
 	}
 	
 	@GetMapping("/getbyschoolnameandendyeardesc")

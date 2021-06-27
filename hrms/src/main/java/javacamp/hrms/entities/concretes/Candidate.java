@@ -53,7 +53,7 @@ public class Candidate extends User{
 	@OneToMany(mappedBy="candidate")
 	private List<Resume> resumes;
 	
-	@OneToMany(mappedBy="candidate",fetch = FetchType.LAZY)
+	/*@OneToMany(mappedBy="candidate",fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<DigitalSkill> digitalSkills;
 	
@@ -71,5 +71,5 @@ public class Candidate extends User{
 	
 	@OneToMany(mappedBy="candidate",fetch = FetchType.LAZY)
 	@JsonIgnore
-	private List<WorkExperience> workExperiences;
+	private List<WorkExperience> workExperiences;*/
 }

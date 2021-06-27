@@ -13,10 +13,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javacamp.hrms.business.abstracts.CandidateService;
 import javacamp.hrms.business.abstracts.PhotoService;
+import javacamp.hrms.business.abstracts.ResumeService;
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.entities.concretes.Candidate;
 import javacamp.hrms.entities.concretes.Photo;
+import javacamp.hrms.entities.concretes.Resume;
 
 @RestController
 @RequestMapping("/api/photo")
@@ -24,20 +26,21 @@ import javacamp.hrms.entities.concretes.Photo;
 public class PhotoController {
 	
 	private PhotoService photoService;
-	private CandidateService candidateService;
+	private ResumeService resumeService;
 	
 	@Autowired
-	public PhotoController(PhotoService photoService, CandidateService candidateService) {
+	public PhotoController(PhotoService photoService, ResumeService resumeService) {
 		super();
 		this.photoService = photoService;
-		this.candidateService = candidateService;
+		this.resumeService = resumeService;
 	}
+		
 
 	@PostMapping(value = "/add")
 	public Result add(@RequestParam(value = "id") int id, @RequestParam(value = "photoFile") MultipartFile photoFile){
-		Candidate candidate = this.candidateService.getById(id).getData();
+		Resume resume = this.resumeService.findById(id).getData();
 		Photo photo = new Photo();
-		photo.setCandidate(candidate);
+		photo.setResume(resume);
 		return this.photoService.save(photo, photoFile);
 	}
 	

@@ -36,4 +36,12 @@ public class EmployeeManager implements EmployeeService {
 		return new SuccessDataResult<List<Employee>>(this.employeeRepository.findAll(),"Employee listed.");
 	}
 
+	@Override
+	public Result update(Employee employee) {
+		Employee employeeToUpdate=employeeRepository.getById(employee.getId());
+		employeeToUpdate=employee;
+		this.employeeRepository.save(employeeToUpdate);
+		return new SuccessResult("Employee has been updated.");
+	}
+
 }

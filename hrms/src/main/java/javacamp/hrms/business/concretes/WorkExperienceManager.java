@@ -43,16 +43,9 @@ public class WorkExperienceManager implements WorkExperienceService{
 	}
 
 	@Override
-	public Result save(WorkExperienceSaveDto workExperience) {
+	public Result save(WorkExperience workExperience) {
 		
-		WorkExperience informations=new WorkExperience();
-		informations.setResume(this.resumeRepository.getById(workExperience.getResumeId()));
-		informations.setCompanyName(workExperience.getCompanyName());
-		informations.setJobTitle(workExperience.getJobTitle());
-		informations.setStartYear(workExperience.getStartYear());
-		informations.setEndYear(workExperience.getEndYear());
-		
-		this.workExperienceRepository.save(informations);
+		this.workExperienceRepository.save(workExperience);
 		return new SuccessResult("Work experience information has been added.");
 	}
 
@@ -61,6 +54,14 @@ public class WorkExperienceManager implements WorkExperienceService{
 		
 		return new SuccessDataResult<List<WorkExperience>>(this.workExperienceRepository.findAll(),
 				"Work experiences has been listed.");
+	}
+
+	@Override
+	public Result update(WorkExperience workExperience) {
+		WorkExperience workExperienceToUpdate=workExperienceRepository.getById(workExperience.getId());
+		workExperienceToUpdate=workExperience;
+		this.workExperienceRepository.save(workExperienceToUpdate);
+		return new SuccessResult("Work experience has been updated.");
 	}
 
 }

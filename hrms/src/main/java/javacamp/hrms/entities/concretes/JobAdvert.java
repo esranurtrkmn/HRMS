@@ -66,9 +66,13 @@ public class JobAdvert {
 	private LocalDate applicationDeadline;
 	
 	
-	@Column(name = "is_active")
+	@Column(name = "status")
 	private boolean status=true;
 
+	
+	@Column(name = "is_confirm")
+	private boolean isConfirm;
+	
 	
 	@ManyToOne()	
 	@JoinColumn(name="employer_id")
@@ -95,7 +99,7 @@ public class JobAdvert {
 	@JoinColumn(name="work_type_id")
 	private WorkType workType;
 	
-	private boolean confirmed;
+	
 	
    
 }

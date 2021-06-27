@@ -2,6 +2,8 @@ package javacamp.hrms.api;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javacamp.hrms.business.abstracts.EmployerService;
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
+import javacamp.hrms.entities.concretes.DigitalSkill;
 import javacamp.hrms.entities.concretes.Employer;
 import javacamp.hrms.entities.concretes.EmployerForRequest;
 import javacamp.hrms.entities.concretes.JobAdvert;
@@ -50,5 +53,12 @@ public class EmployerController {
 		return this.employerService.add(employer);
 		
 	}
+	
+	@PostMapping("/update")
+	public Result update(@Valid @RequestBody Employer employer) {
+		return this.employerService.update(employer);
+	}
+	
+	
 	
 }

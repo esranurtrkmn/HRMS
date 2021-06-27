@@ -11,5 +11,6 @@ public interface EducationService {
 
 	DataResult<List<Education>> getByEducationSchoolNameAndEndYearDesc();
 	DataResult<List<Education>> getAll();
-	Result save(EducationSaveDto education);
+	Result save(Education education);
+	Result update(Education education);
 }

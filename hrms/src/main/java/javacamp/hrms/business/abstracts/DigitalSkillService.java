@@ -10,6 +10,7 @@ import javacamp.hrms.entities.dtos.DigitalSkillSaveDto;
 
 public interface DigitalSkillService {
 
-	Result save(DigitalSkillSaveDto language);
+	Result save(DigitalSkill digitalSkill);
+	Result update(DigitalSkill digitalSkill);
 	DataResult<List<DigitalSkill>> getAll();
 }

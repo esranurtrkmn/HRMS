@@ -9,6 +9,7 @@ import javacamp.hrms.entities.concretes.Employee;
 public interface EmployeeService {
 	
 	Result add(Employee employee);
-	 public DataResult<List<Employee>> getAll();
+	Result update(Employee employee);
+	public DataResult<List<Employee>> getAll();
 
 }

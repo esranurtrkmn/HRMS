@@ -6,4 +6,5 @@ import javacamp.hrms.entities.concretes.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+	
 }

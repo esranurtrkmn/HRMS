@@ -69,4 +69,13 @@ public class EmployerManager extends UserManager implements EmployerService{
 	public DataResult<Employer> getById(int id) {
 		return new SuccessDataResult<Employer>(this.employerRepository.getById(id),"Employers listed.");
 	}
+
+
+	@Override
+	public Result update(Employer employer) {
+		Employer employerToUpdate=employerRepository.getById(employer.getId());
+		employerToUpdate=employer;
+		this.employerRepository.save(employerToUpdate);
+		return new SuccessResult("Employer has been updated.");
+	}
 }

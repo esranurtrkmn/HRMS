@@ -16,6 +16,7 @@ import javacamp.hrms.business.abstracts.DigitalSkillService;
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.entities.concretes.DigitalSkill;
+import javacamp.hrms.entities.concretes.Resume;
 import javacamp.hrms.entities.dtos.DigitalSkillSaveDto;
 
 @RestController
@@ -32,9 +33,14 @@ public class DigitalSkillController {
 	}
 	
 	@PostMapping("/save")
-	public Result save(@Valid @RequestBody DigitalSkillSaveDto digitalSkill) {
+	public Result save(@Valid @RequestBody DigitalSkill digitalSkill) {
 		
 		return this.digitalSkillService.save(digitalSkill);
+	}
+	
+	@PostMapping("/update")
+	public Result update(@Valid @RequestBody DigitalSkill digitalSkill) {
+		return this.digitalSkillService.update(digitalSkill);
 	}
 	
 	@GetMapping("/getall")

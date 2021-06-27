@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name="photo")
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","resume"})
 public class Photo {
 
 	@Id
@@ -30,11 +33,11 @@ public class Photo {
 	@Column(name="photo_url")
 	private String photoUrl;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="resume_id")
     private Resume resume;	
 	
-	@OneToOne(optional=false,fetch=FetchType.LAZY)
+	/*@OneToOne(optional=false,fetch=FetchType.LAZY)
     @JoinColumn(name = "candidate_id", referencedColumnName = "id")
-	private Candidate candidate;
+	private Candidate candidate;*/
 }

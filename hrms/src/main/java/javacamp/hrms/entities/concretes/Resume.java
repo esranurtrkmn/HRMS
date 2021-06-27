@@ -27,7 +27,7 @@ import lombok.NoArgsConstructor;
 @Table(name="resumes")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","resumes"})
+
 public class Resume {
 
 
@@ -55,24 +55,24 @@ public class Resume {
 	@JoinColumn(name="candidate_id")
 	private Candidate candidate;
 		
-	@OneToMany(mappedBy="resume",fetch = FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="resume")
+	
 	private List<DigitalSkill> digitalSkills;
 	
-	@OneToMany(mappedBy="resume",fetch = FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="resume")
+	
 	private List<Education> educations;
 	
-	@OneToMany(mappedBy="resume",fetch = FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="resume")
+	
 	private List<Language> languages;
 	
-	@OneToMany(mappedBy="resume",fetch = FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="resume")
+	
 	private List<Photo> photos;
 	
-	@OneToMany(mappedBy="resume",fetch = FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="resume")
+	
 	private List<WorkExperience> workExperiences;
 	
 }

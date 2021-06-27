@@ -12,4 +12,6 @@ public interface ResumeService {
 	DataResult<Resume> findById(int id);
 	DataResult<List<Resume>> getAll();
 	Result save(ResumeSaveDto resume);
+	Result update(Resume resume);
+    DataResult<Resume> getByCandidateId(int id);
 }

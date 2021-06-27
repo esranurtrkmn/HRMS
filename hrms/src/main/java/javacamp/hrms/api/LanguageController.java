@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javacamp.hrms.business.abstracts.LanguageService;
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
+import javacamp.hrms.entities.concretes.Education;
 import javacamp.hrms.entities.concretes.Language;
 import javacamp.hrms.entities.dtos.LanguageSaveDto;
 
@@ -32,9 +33,14 @@ public class LanguageController {
 	}
 	
 	@PostMapping("/save")
-	public Result save(@Valid @RequestBody LanguageSaveDto language) {
+	public Result save(@Valid @RequestBody Language language) {
 		
 		return this.languageService.save(language);
+	}
+	
+	@PostMapping("/update")
+	public Result update(@Valid @RequestBody Language language) {
+		return this.languageService.update(language);
 	}
 	
 	@GetMapping("/getall")

@@ -9,7 +9,8 @@ import javacamp.hrms.entities.dtos.WorkExperienceSaveDto;
 
 public interface WorkExperienceService {
 
-	DataResult<List<WorkExperience>> getByWorkExperienceCompanyNameAndEndYearDesc();
-	Result save(WorkExperienceSaveDto workExperience);
+	Result save(WorkExperience workExperience);
+	Result update(WorkExperience workExperience);
+	DataResult<List<WorkExperience>> getByWorkExperienceCompanyNameAndEndYearDesc();	
 	DataResult<List<WorkExperience>> getAll();
 }

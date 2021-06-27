@@ -7,4 +7,5 @@ import javacamp.hrms.entities.concretes.JobTitle;
 public interface JobTitleRepository extends JpaRepository<JobTitle,Integer> {
 
 	
+	
 }

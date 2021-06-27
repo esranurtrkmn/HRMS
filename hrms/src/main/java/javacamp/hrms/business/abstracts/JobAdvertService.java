@@ -11,7 +11,9 @@ public interface JobAdvertService{
 
 	Result add(JobAdvert jobAdvert);
 	
-	Result setActiveAndConfirm(int jobAdvId,int employeeId);
+	Result updateIsConfirm(boolean isConfirm, int id);
+	
+	Result closeJobAdvert(int id); 
 	
 	DataResult<List<JobAdvert>> getAll();
 	
@@ -21,7 +23,9 @@ public interface JobAdvertService{
 	
 	DataResult<List<JobAdvert>> findAllByOrderByCreatedAtDesc();
 	
-	Result closeJobAdvert(int id); 
+	DataResult<List<JobAdvert>> getByIsConfirm(boolean isConfirm);
+
+	DataResult<List<JobAdvert>> getByIsConfirmAndStatus(boolean isConfirm, boolean status);
 	
 	DataResult<JobAdvert> getById(int id);
 }
