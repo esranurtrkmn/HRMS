@@ -17,6 +17,7 @@ import javacamp.hrms.business.abstracts.ResumeService;
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.entities.concretes.Candidate;
+import javacamp.hrms.entities.concretes.Language;
 import javacamp.hrms.entities.concretes.Photo;
 import javacamp.hrms.entities.concretes.Resume;
 
@@ -49,4 +50,10 @@ public class PhotoController {
 		return this.photoService.getAll();
 	}
 	
+	@GetMapping("/getByResumeId")	
+	public DataResult<List<Photo>> getByResumeId(int id){
+			
+    	return this.photoService.getByResumeId(id);
+
+    }
 }

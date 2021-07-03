@@ -46,6 +46,12 @@ public class PhotoManager implements PhotoService{
 		return new SuccessDataResult<List<Photo>>(this.photoRepository.findAll(),"Photos has been listed.");
 	}
 
+	@Override
+	public DataResult<List<Photo>> getByResumeId(int id) {
+		
+		return new SuccessDataResult<List<Photo>>(this.photoRepository.getByResumeId(id),"photos ordered by resume.");
+	}
+
 	
 	
 

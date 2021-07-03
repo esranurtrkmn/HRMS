@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,7 +45,7 @@ public class EducationController {
 	   
 	}
 	
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public Result update(@Valid @RequestBody Education education) {
 		return this.educationService.update(education);
 	}
@@ -54,5 +55,12 @@ public class EducationController {
 		
 		return this.educationService.getByEducationSchoolNameAndEndYearDesc();
 	}
+	
+	 @GetMapping("/getByResumeId")	
+     public DataResult<List<Education>> getByResumeId(int id){
+		 
+	    return this.educationService.getByResumeId(id);
+
+	 }
 	
 }

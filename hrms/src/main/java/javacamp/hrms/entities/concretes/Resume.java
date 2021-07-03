@@ -36,8 +36,7 @@ public class Resume {
 	@Column(name="id")
 	private int id;
 	
-	@NotNull
-	@NotBlank
+	
 	@Column(name="cv_name")
 	private String cvName;
 	

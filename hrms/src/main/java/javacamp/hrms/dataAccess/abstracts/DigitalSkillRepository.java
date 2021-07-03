@@ -15,6 +15,9 @@ public interface DigitalSkillRepository extends JpaRepository<DigitalSkill,Integ
 	@Query("FROM DigitalSkill d ORDER BY d.skillName ")
 	List<DigitalSkill> getAll();
 	
+	@Query("FROM DigitalSkill WHERE resume_id =:id")
+	List<DigitalSkill> getByResumeId(int id);
+	
 	DigitalSkill getById(int id);
 	
 }

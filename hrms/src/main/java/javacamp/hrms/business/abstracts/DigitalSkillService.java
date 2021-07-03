@@ -13,4 +13,5 @@ public interface DigitalSkillService {
 	Result save(DigitalSkill digitalSkill);
 	Result update(DigitalSkill digitalSkill);
 	DataResult<List<DigitalSkill>> getAll();
+	DataResult<List<DigitalSkill>> getByResumeId(int id);
 }

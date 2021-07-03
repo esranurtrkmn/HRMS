@@ -69,4 +69,10 @@ public class EducationManager implements EducationService{
 		return new SuccessResult("Education has been updated.");
 	}
 
+	@Override
+	public DataResult<List<Education>> getByResumeId(int id) {
+		
+		return new SuccessDataResult<List<Education>>(this.educationRepository.getByResumeId(id),"educations ordered by resume.");
+	}
+
 }

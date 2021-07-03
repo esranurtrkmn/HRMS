@@ -50,5 +50,11 @@ public class DigitalSkillManager implements DigitalSkillService{
 		return new SuccessResult("DigitalSkill has been updated.");
 	}
 
+	@Override
+	public DataResult<List<DigitalSkill>> getByResumeId(int id) {
+		
+		return new SuccessDataResult<List<DigitalSkill>>(this.digitalSkillRepository.getByResumeId(id),"skills has been ordered by resume");
+	}
+
 	
 }

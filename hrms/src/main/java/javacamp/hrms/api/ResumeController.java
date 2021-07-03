@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,8 +51,7 @@ public class ResumeController {
 	public DataResult<Resume> getByCandidateId(int id){
 		return this.resumeService.getByCandidateId(id);
 	}
-	 
-	 
+	 	 
 	 
 	@PostMapping("/save")
 	public Result save(@Valid @RequestBody ResumeSaveDto resume){
@@ -60,8 +60,14 @@ public class ResumeController {
 	   
 	}
 	
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public Result update(@Valid @RequestBody Resume resume) {
 		return this.resumeService.update(resume);
+	}
+	
+	@DeleteMapping(value = "/deleteById")
+	public DataResult<Boolean> deleteById(@RequestParam int id) {
+		
+	   return resumeService.deleteById(id);
 	}
 }

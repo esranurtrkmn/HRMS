@@ -48,6 +48,12 @@ public class LanguageManager implements LanguageService{
 		this.languageRepository.save(languageToUpdate);
 		return new SuccessResult("Language has been updated.");
 	}
+
+	@Override
+	public DataResult<List<Language>> getByResumeId(int id) {
+		
+		return new SuccessDataResult<List<Language>>(this.languageRepository.getByResumeId(id),"languages ordered by resume.");
+	}
 	
 	
 

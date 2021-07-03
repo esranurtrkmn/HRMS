@@ -14,4 +14,5 @@ public interface ResumeService {
 	Result save(ResumeSaveDto resume);
 	Result update(Resume resume);
     DataResult<Resume> getByCandidateId(int id);
+    DataResult<Boolean> deleteById(int id);
 }

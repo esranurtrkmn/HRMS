@@ -1,5 +1,6 @@
 package javacamp.hrms.entities.concretes;
 
+import javax.persistence.Access;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +13,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -56,6 +63,7 @@ public class Education {
 	private Candidate candidate;*/
 	
 	@ManyToOne()
+    @JsonProperty()
 	@JoinColumn(name="resume_id")
 	private Resume resume;
 	

@@ -77,5 +77,15 @@ public class ResumeManager implements ResumeService {
 	}
 
 
+	@Override
+	public DataResult<Boolean> deleteById(int id) {
+
+		this.resumeRepository.deleteById(id);
+
+		
+		return new SuccessDataResult<Boolean>(true, "Success");
+	}
+
+
 
 }

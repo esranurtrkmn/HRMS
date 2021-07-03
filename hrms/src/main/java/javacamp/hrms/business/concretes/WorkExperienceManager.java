@@ -64,4 +64,10 @@ public class WorkExperienceManager implements WorkExperienceService{
 		return new SuccessResult("Work experience has been updated.");
 	}
 
+	@Override
+	public DataResult<List<WorkExperience>> getByResumeId(int id) {
+		
+		return new SuccessDataResult<List<WorkExperience>>(this.workExperienceRepository.getByResumeId(id),"work experiences ordered by resume.");
+	}
+
 }
