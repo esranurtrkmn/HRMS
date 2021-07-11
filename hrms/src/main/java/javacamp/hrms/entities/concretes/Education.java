@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Table(name="education")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","resume"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","resume"})
 public class Education {
 
 	@Id
@@ -58,12 +58,9 @@ public class Education {
 	@Column(name="graduate_status")
 	private String graduateStatus;
 	
-	/*@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="candidate_id")
-	private Candidate candidate;*/
-	
+		
 	@ManyToOne()
-    @JsonProperty()
+	@JsonProperty
 	@JoinColumn(name="resume_id")
 	private Resume resume;
 	

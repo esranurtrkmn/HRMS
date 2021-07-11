@@ -12,7 +12,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Table(name="work_experience")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","resume"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","resume"})
 public class WorkExperience {
 
 	@Id
@@ -51,11 +53,9 @@ public class WorkExperience {
 	@Column(name="work_status")
 	private String workStatus;
 
-	/*@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="candidate_id")
-	private Candidate candidate;*/
-	
-	@ManyToOne()
+
+	@ManyToOne()	
+	@JsonProperty
 	@JoinColumn(name="resume_id")
 	private Resume resume;
 }

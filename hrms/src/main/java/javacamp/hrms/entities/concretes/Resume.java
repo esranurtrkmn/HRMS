@@ -54,24 +54,24 @@ public class Resume {
 	@JoinColumn(name="candidate_id")
 	private Candidate candidate;
 		
-	@OneToMany(mappedBy="resume")
-	
+	@OneToMany(mappedBy="resume")	
+	@JsonIgnore
 	private List<DigitalSkill> digitalSkills;
 	
-	@OneToMany(mappedBy="resume")
-	
+	@OneToMany(mappedBy="resume")	
+	@JsonIgnore
 	private List<Education> educations;
 	
-	@OneToMany(mappedBy="resume")
-	
+	@OneToMany(mappedBy="resume")	
+	@JsonIgnore
 	private List<Language> languages;
 	
-	@OneToMany(mappedBy="resume")
-	
+	@OneToMany(mappedBy="resume")	
+	@JsonIgnore
 	private List<Photo> photos;
 	
-	@OneToMany(mappedBy="resume")
-	
+	@OneToMany(mappedBy="resume")	
+	@JsonIgnore
 	private List<WorkExperience> workExperiences;
 	
 }

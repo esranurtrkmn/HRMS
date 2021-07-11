@@ -12,6 +12,7 @@ import javacamp.hrms.core.utilities.results.SuccessDataResult;
 import javacamp.hrms.core.utilities.results.SuccessResult;
 import javacamp.hrms.dataAccess.abstracts.ResumeRepository;
 import javacamp.hrms.dataAccess.abstracts.WorkExperienceRepository;
+import javacamp.hrms.entities.concretes.Resume;
 import javacamp.hrms.entities.concretes.WorkExperience;
 import javacamp.hrms.entities.dtos.WorkExperienceSaveDto;
 
@@ -58,6 +59,7 @@ public class WorkExperienceManager implements WorkExperienceService{
 
 	@Override
 	public Result update(WorkExperience workExperience) {
+		
 		WorkExperience workExperienceToUpdate=workExperienceRepository.getById(workExperience.getId());
 		workExperienceToUpdate=workExperience;
 		this.workExperienceRepository.save(workExperienceToUpdate);

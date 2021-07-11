@@ -18,6 +18,7 @@ public interface WorkExperienceRepository extends JpaRepository<WorkExperience, 
 	
 	@Query("FROM WorkExperience WHERE resume_id =:id")
 	List<WorkExperience> getByResumeId(int id);
+		
 	
 	WorkExperience getById(int id);
 }

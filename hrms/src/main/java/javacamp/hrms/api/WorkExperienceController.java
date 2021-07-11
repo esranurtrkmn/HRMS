@@ -43,6 +43,7 @@ public class WorkExperienceController {
 	
 	@PutMapping("/update")
 	public Result update(@Valid @RequestBody WorkExperience workExperience) {
+		System.out.println(workExperience);
 		return this.workExperienceService.update(workExperience);
 	}
 	

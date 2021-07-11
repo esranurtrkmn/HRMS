@@ -46,6 +46,7 @@ public class DigitalSkillManager implements DigitalSkillService{
 	public Result update(DigitalSkill digitalSkill) {
 		DigitalSkill digitalSkillToUpdate = digitalSkillRepository.getById(digitalSkill.getId());
 		digitalSkillToUpdate = digitalSkill;
+		digitalSkillToUpdate.setResume(digitalSkill.getResume());
 		this.digitalSkillRepository.save(digitalSkillToUpdate);
 		return new SuccessResult("DigitalSkill has been updated.");
 	}

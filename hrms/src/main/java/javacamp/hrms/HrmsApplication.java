@@ -14,14 +14,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class HrmsApplication {
 
-	 public static void beforeClass() {
+	/* public static void beforeClass() {
 		  System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.Log4JLogger");
 		  System.setProperty("org.apache.commons.logging.LogFactory", "org.apache.commons.logging.impl.LogFactoryImpl");
-		 }
+		 }*/
 	
 	public static void main(String[] args) {
 		SpringApplication.run(HrmsApplication.class, args);
-		beforeClass();
+		//beforeClass();
 	}
 
 	
