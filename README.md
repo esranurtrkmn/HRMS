@@ -1,13 +1,6 @@
 # HRMS
 ## Hrms with Spring Boot using PostgreSQL
 
-Used Technologies:
-
-- Spring Framework
-- Spring Data JPA(Hibernate)
-- Spring MVC
-- PostgreSQL
-
 Description:
  
 - There's 3 roles have been defined in this project. Employer, candidate and employee. 
@@ -15,6 +8,16 @@ Description:
 - Employers must enter the mandatory information to register. 
 - Employees can provide verification of employers.
 - The verification messages are sent to the emails of employers and candidates after they are registered. 
+
+
+Used Technologies:
+
+- Spring Framework
+- Spring Data JPA(Hibernate)
+- Spring MVC
+- PostgreSQL
+
+
 
 ERD Diagram:
 
