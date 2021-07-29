@@ -7,6 +7,8 @@ Used Technologies:
 - Spring Data JPA(Hibernate)
 - Spring MVC
 - PostgreSQL
+
+Description:
  
 - There's 3 roles have been defined in this project. Employer, candidate and employee. 
 - Candidates cannot register without entering the mandatory information and passing through the Mernis control system(Identity Number Validation).
