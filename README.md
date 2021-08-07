@@ -16,6 +16,7 @@ Used Technologies:
 - Spring Data JPA(Hibernate)
 - Spring MVC
 - PostgreSQL
+- Swagger
 
 
 
